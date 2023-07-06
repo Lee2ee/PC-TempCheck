@@ -1,10 +1,10 @@
 package com.temp.manager.domain.temp;
 
+import com.temp.manager.domain.Temp;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-import java.util.Map;
 
 @RestController
 @RequestMapping("/") // API 엔드포인트의 기본 경로를 설정합니다.
@@ -17,4 +17,6 @@ public class TempApiController {
     public List<Temp> getAllTemps() {
         return tempService.getAllTemps(); // 서비스 메소드를 호출하여 결과를 반환합니다.
     }
+
 }
+

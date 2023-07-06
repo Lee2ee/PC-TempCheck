@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout/layout}">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Temp Data Archive List</title>
+</head>
+<main layout:fragment="content">
+    <div class="container-fluid px-4">
+        <h1>Temp Archive - File List</h1>
+        <table class="table table-bordered">
+            <thead>
+            <tr>
+                <th>ID</th>
+                <th>Filename</th>
+                <th>Date Time</th>
+                <th>Actions</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="localFile : ${localFiles}">
+                <td th:text="${localFile.id}"></td>
+                <td th:text="${localFile.fileName}"></td>
+                <td th:text="${#temporals.format(localFile.creationTime, 'yyyy-MM-dd HH:mm:ss')}"></td>
+                <td>
+                    <a th:href="@{/files/{id}(id=${localFile.id})}" class="btn btn-success">Download</a>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</main>
+</html>

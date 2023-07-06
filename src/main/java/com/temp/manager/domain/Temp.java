@@ -1,10 +1,9 @@
-package com.temp.manager.domain.temp;
+package com.temp.manager.domain;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.*;
 
 import javax.persistence.*;
-import java.sql.Timestamp;
 import java.time.LocalDateTime;
 
 @Entity
@@ -38,6 +37,8 @@ public class Temp {
     @Column(name = "state")
     private String state;
 
+    private static final LocalDateTime baseTime = LocalDateTime.now();
+
     @Builder
     public Temp(String ip, LocalDateTime dateTime, Float cpuTemp, Float cpuUsage, Float gpuTemp, Float gpuUsage, String state) {
         this.ip = ip;
@@ -47,5 +48,22 @@ public class Temp {
         this.gpuTemp = gpuTemp;
         this.gpuUsage = gpuUsage;
         this.state = state;
+    }
+
+    public Temp withState(String state) {
+        return Temp.builder()
+                .ip(this.ip)
+                .dateTime(this.dateTime)
+                .cpuTemp(this.cpuTemp)
+                .cpuUsage(this.cpuUsage)
+                .gpuTemp(this.gpuTemp)
+                .gpuUsage(this.gpuUsage)
+                .state(state)
+                .build();
+    }
+
+    public Temp updateStateOnly(String newState) {
+        this.state = newState;
+        return this;
     }
 }
