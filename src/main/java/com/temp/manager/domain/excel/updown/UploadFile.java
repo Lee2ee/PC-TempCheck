@@ -25,6 +25,7 @@ public class UploadFile {
             Stream<Path> paths = Files.list(Paths.get(folderPath));
 
             paths.filter(Files::isRegularFile)
+                    .filter(path -> !path.getFileName().toString().startsWith("~$"))
                     .forEach(path -> {
                         try {
                             String fileName = path.getFileName().toString();

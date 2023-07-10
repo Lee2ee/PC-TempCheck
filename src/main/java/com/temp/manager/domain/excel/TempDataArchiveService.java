@@ -36,4 +36,15 @@ public class TempDataArchiveService {
         // 오늘 날짜와 일치하는 기록을 가져오는 쿼리
         return tempArchiveRepository.findTempsByDateTimeBetween(today.atStartOfDay(), today.plusDays(1).atStartOfDay());
     }
+
+    public void exportCurrentDataWithoutDeleting() {
+        try {
+
+            List<Temp> todayData = fetchDailyData(); // 데이터베이스로부터 하루치 데이터 가져오기
+            ExcelExporter.exportToExcel(todayData);  // dailyData를 전달하여 Excel 파일로 저장
+        }catch (Exception e) {
+            System.err.println("Error during export: " + e.getMessage());
+            e.printStackTrace();
+        }
+    }
 }

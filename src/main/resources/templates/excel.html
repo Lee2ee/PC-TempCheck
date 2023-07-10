@@ -10,7 +10,9 @@
 </head>
 <main layout:fragment="content">
     <div class="container-fluid px-4">
-        <h1>Temp Archive - File List</h1>
+        <h1>Temp Archive</h1>
+<!--        <button type="button" class="btn btn-primary">Today-Data</button>-->
+        <button id="exportDataBtn" class="btn btn-primary">오늘 데이터</button>
         <table class="table table-bordered">
             <thead>
             <tr>
@@ -26,7 +28,7 @@
                 <td th:text="${localFile.fileName}"></td>
                 <td th:text="${#temporals.format(localFile.creationTime, 'yyyy-MM-dd HH:mm:ss')}"></td>
                 <td>
-                    <a th:href="@{/files/{id}(id=${localFile.id})}" class="btn btn-success">Download</a>
+                    <a th:href="@{/files/{id}(id=${localFile.id})}" class="btn btn-success">다운로드</a>
                 </td>
             </tr>
             </tbody>

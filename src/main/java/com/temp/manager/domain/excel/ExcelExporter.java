@@ -38,13 +38,18 @@ public class ExcelExporter {
             Temp temp = tempList.get(i);
             Row dataRow = sheet.createRow(i + 1);
 
+            float cpuTemp = (temp.getCpuTemp() != null) ? temp.getCpuTemp() : 0.0f;
+            float cpuUsage = (temp.getCpuUsage() != null) ? temp.getCpuUsage() : 0.0f;
+            float gpuTemp = (temp.getGpuTemp() != null) ? temp.getGpuTemp() : 0.0f;
+            float gpuUsage = (temp.getGpuUsage() != null) ? temp.getGpuUsage() : 0.0f;
+
             dataRow.createCell(0).setCellValue(temp.getId());
             dataRow.createCell(1).setCellValue(temp.getIp());
             dataRow.createCell(2).setCellValue(dateTimeFormatter.format(temp.getDateTime()));
-            dataRow.createCell(3).setCellValue(temp.getCpuTemp());
-            dataRow.createCell(4).setCellValue(temp.getCpuUsage());
-            dataRow.createCell(5).setCellValue(temp.getGpuTemp());
-            dataRow.createCell(6).setCellValue(temp.getGpuUsage());
+            dataRow.createCell(3).setCellValue(cpuTemp);
+            dataRow.createCell(4).setCellValue(cpuUsage);
+            dataRow.createCell(5).setCellValue(gpuTemp);
+            dataRow.createCell(6).setCellValue(gpuUsage);
             dataRow.createCell(7).setCellValue(temp.getState());
         }
 

@@ -41,7 +41,7 @@
                         <th>IP</th>
                         <th>Timestamp</th>
                         <th>State</th>
-                        <th>Delete</th>
+<!--                        <th>Delete</th>-->
                     </tr>
                     </thead>
                     <tbody>
@@ -50,9 +50,10 @@
                         <td th:text="${temp.ip}"></td>
                         <td th:text="${#strings.replace(temp.dateTime, 'T', ' ')}"></td>
                         <td th:text="${temp.state}"></td>
-                        <td>
-                            <button type="button" class="btn btn-danger" th:attr="data-id=${temp.id}">삭제</button>
-                        </td>
+<!--                        <td>-->
+<!--&lt;!&ndash;                            <button type="button" class="btn btn-danger" th:attr="data-id=${temp.id}">삭제</button>&ndash;&gt;-->
+<!--                            <button type="button" class="btn btn-danger btn-delete" data-id="${temp.id}">삭제</button>-->
+<!--                        </td>-->
                     </tr>
                     </tbody>
                 </table>

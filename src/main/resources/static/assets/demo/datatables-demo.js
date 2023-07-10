@@ -1,13 +1,21 @@
-document.addEventListener("DOMContentLoaded", function() {
-var deleteButtons = document.querySelectorAll(".delete-btn");
+//$(document).ready(function () {
+//  var deleteButtons = document.querySelectorAll(".delete-btn");
+//
+//  deleteButtons.forEach(function (button) {
+//    button.addEventListener("click", function () {
+//      var id = button.getAttribute("data-id");
+//      deleteData(id);
+//    });
+//  });
+//});
 
-deleteButtons.forEach(function(button) {
-  button.addEventListener("click", function() {
-    var id = button.getAttribute("data-id");
+$(document).ready(function () {
+  $(document).on("click", ".delete-btn", function () {
+    var id = $(this).attr("data-id");
     deleteData(id);
   });
 });
-});
+
 function deleteData(id) {
     $.ajax({
         url: "/"+ id,
